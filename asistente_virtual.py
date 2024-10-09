@@ -12,7 +12,7 @@ import wikipedia
 def transformar_audio_en_texto():
 
     # Almacenar el recognizer en una cariable 
-    r = sr.Recognizer
+    r = sr.Recognizer()
 
     # Configurar el microfono
     with sr.Microphone() as origen:
@@ -28,7 +28,7 @@ def transformar_audio_en_texto():
 
         try:
             # Buscar en google 
-            pedido = r.recognize_google(audio, laguaje="es-mx")
+            pedido = r.recognize_google(audio, language="es-mx")
 
             # Prueba de que pudo ingresar 
             print("Dijiste: " + pedido)
