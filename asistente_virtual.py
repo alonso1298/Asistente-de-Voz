@@ -17,6 +17,9 @@ def transformar_audio_en_texto():
     # Configurar el microfono
     with sr.Microphone() as origen:
 
+        # Ajustar para el ruido de fondo
+        r.adjust_for_ambient_noise(origen)  
+
         # Tiempo de espera 
         r.pause_threshold = 0.8
 
