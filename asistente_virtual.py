@@ -82,7 +82,7 @@ def hablar(mensaje):
     # pronuncia el mesaje
     engine.say(mensaje)
     # Se encarga de que diga y ejecute el mensaje
-    engine.runAndWait()
+    return engine.runAndWait()
 
 # Informar el dia de la semana
 def pedir_dia():
@@ -108,7 +108,6 @@ def pedir_dia():
     
     # Decir dia de la semana 
     hablar(f'Hoy es {calendario[dia_semana]}')
-
 
 # Informar la hora
 def pedir_hora():
@@ -158,8 +157,11 @@ def pedir_cosas():
             hablar('Claro estoy en eso')
             webbrowser.open('https://www.google.com')
             continue
-        elif 'Que dia es hoy' in pedido:
+        elif 'qué día es hoy' in pedido:
             pedir_dia()
+            continue
+        elif 'qué hora es' in pedido:
+            pedir_hora()
             continue
 
 pedir_cosas()
