@@ -121,6 +121,20 @@ def pedir_hora():
     # Decir la Hora
     hablar(hora)
 
-pedir_hora()
+# Función saludo inicial
+def saludo_inicial():
 
+    # Crear variable con datos de hora 
+    hora = datetime.datetime.now()
+    if hora.hour < 6 or hora.hour > 20:
+        momento = 'Buenas noches'
+    elif 6 <= hora.hour < 13:
+        momento = 'Buenos dias'
+    else:
+        momento = 'Buenas tardes'
+
+    # Decir el saludo
+    hablar(f'Hola {momento}, soy Sabina, tu asistente personal. Por favor dime en que te puedo ayudar')
+
+saludo_inicial()
 
