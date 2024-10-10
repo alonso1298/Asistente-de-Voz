@@ -67,14 +67,23 @@ def transformar_audio_en_texto():
             return 'Sigo esperando'
         
 #Función para que el asistente pueda ser escuchado 
-def habalar(mensaje):
+def hablar(mensaje):
 
     # Enceder el motor de pyttsx3
     engine = pyttsx3.init()
+
+    # Se configura la voz 
+    engine.setProperty('voice', id1)
 
     # pronuncia el mesaje
     engine.say(mensaje)
     # Se encarga de que diga y ejecute el mensaje
     engine.runAndWait()
 
-habalar('Hola mundo')
+
+
+id1 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
+id2 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+
+
+hablar('Hola Alonso. espero que tengas un buen dia')
