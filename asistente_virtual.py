@@ -8,6 +8,10 @@ import webbrowser
 import datetime
 import wikipedia
 
+# Opciones de voz / idioma 
+id1 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
+id2 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+
 # Escuchar nuesto microfono y devolver el audio como texto 
 def transformar_audio_en_texto():
 
@@ -80,10 +84,35 @@ def hablar(mensaje):
     # Se encarga de que diga y ejecute el mensaje
     engine.runAndWait()
 
+# Informar el dia de la semana
+def pedir_dia():
+
+    # Variable con datos del dia actual
+    dia = datetime.date.today()
+    print(dia)
+
+    # Crear una variable para el dia de la semana 
+    dia_semana = dia.weekday()
+    print(dia_semana)
+
+    #diccionario con nombres de los dias 
+    calendario = {
+        0: 'Lunes', 
+        1: 'Martes',
+        2: 'Miércoles',
+        3: 'Jueves',
+        4: 'Viernes',
+        5: 'Sábado',
+        6: 'Domingo',
+        }
+    
+    # Decir dia de la semana 
+    hablar(f'Hoy es {calendario[dia_semana]}')
 
 
-id1 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
-id2 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+pedir_dia()
 
 
-hablar('Hola Alonso. espero que tengas un buen dia')
+
+
+
