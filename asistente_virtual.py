@@ -129,12 +129,39 @@ def saludo_inicial():
     if hora.hour < 6 or hora.hour > 20:
         momento = 'Buenas noches'
     elif 6 <= hora.hour < 13:
-        momento = 'Buenos dias'
+        momento = 'Buenos días'
     else:
         momento = 'Buenas tardes'
 
     # Decir el saludo
     hablar(f'Hola {momento}, soy Sabina, tu asistente personal. Por favor dime en que te puedo ayudar')
 
-saludo_inicial()
+# Funcion central del asistente
+def pedir_cosas():
+
+    #Activar saludo inicial
+    saludo_inicial()
+
+    # Variable de corte 
+    comenzar = True
+
+    while comenzar:
+
+        # Activar el micro y guardar el pedido en un string
+        pedido = transformar_audio_en_texto().lower()
+
+        if 'abrir youtube' in pedido:
+            hablar('Con gusto estoy abriendo YouTube.')
+            webbrowser.open('https://www.youtube.com')
+            continue
+        elif 'abrir navegador' in pedido:
+            hablar('Claro estoy en eso')
+            webbrowser.open('https://www.google.com')
+            continue
+        elif 'Que dia es hoy' in pedido:
+            pedir_dia()
+            continue
+
+pedir_cosas()
+
 
