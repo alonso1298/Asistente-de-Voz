@@ -110,9 +110,17 @@ def pedir_dia():
     hablar(f'Hoy es {calendario[dia_semana]}')
 
 
-pedir_dia()
+# Informar la hora
+def pedir_hora():
 
+    # Variable con datos de la hora
+    hora = datetime.datetime.now()
+    hora = f'En este momento son las {hora.hour} horas con {hora.minute} minutos y {hora.second} segundos'
+    print(hora)
 
+    # Decir la Hora
+    hablar(hora)
 
+pedir_hora()
 
 
