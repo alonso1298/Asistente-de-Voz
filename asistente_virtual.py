@@ -200,6 +200,9 @@ def pedir_cosas():
             except:
                 hablar('No la he encontrado')
                 continue
+        elif 'adiós' in pedido:
+            hablar('Me voy a descansar, cualquier cosa me avisas')
+            break
 
 
 pedir_cosas()
