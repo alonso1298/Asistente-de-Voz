@@ -171,6 +171,12 @@ def pedir_cosas():
             hablar('Wikipedia dice lo siguiente:')
             hablar(resultado)
             continue
+        elif 'busca en internet' in pedido:
+            hablar('ya mismo estoy en eso')
+            pedido = pedido.replace('busca en internet', '')
+            pywhatkit.search(pedido)
+            hablar('Esto es lo que ehe encontrado')
+            continue
 
 
 pedir_cosas()
