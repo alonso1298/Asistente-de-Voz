@@ -1,7 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 import pywhatkit
-import yfinance
+import yfinance as yf
 import pywhatkit
 import pyjokes
 import webbrowser
@@ -177,6 +177,29 @@ def pedir_cosas():
             pywhatkit.search(pedido)
             hablar('Esto es lo que ehe encontrado')
             continue
+        elif 'reproducir' in pedido:
+            hablar('Buena idea ya lo estoy reproduciendo')
+            pywhatkit.playonyt(pedido)
+            continue
+        elif 'chiste' in pedido:
+            hablar(pyjokes.get_joke('es'))
+            continue
+        elif 'precio de las acciones' in pedido:
+            accion = pedido.split('de')[-1].strip()
+            cartera = {
+                'apple': 'APPL',
+                'amazon': 'AMZN',
+                'google': 'GOOGL'
+            }
+            try:
+                accion_buscada = cartera[accion]
+                accion_buscada = yf.Ticker(accion_buscada)
+                precio_actual = accion_buscada.info['regularMarketPrice']
+                hablar(f'La encontré, el precio de {accion} es {precio_actual}')
+                continue
+            except:
+                hablar('No la he encontrado')
+                continue
 
 
 pedir_cosas()
