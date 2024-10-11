@@ -163,6 +163,15 @@ def pedir_cosas():
         elif 'qué hora es' in pedido:
             pedir_hora()
             continue
+        elif 'busca en wikipedia' in pedido:
+            hablar('Buscando eso en Wikipedia')
+            pedido = pedido.replace('busca en wikipedia', '')
+            wikipedia.set_lang('es')
+            resultado = wikipedia.summary(pedido, sentences=1)
+            hablar('Wikipedia dice lo siguiente:')
+            hablar(resultado)
+            continue
+
 
 pedir_cosas()
 
